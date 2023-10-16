@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFRICA - sphere insight</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="destination.css">
+</head>
+<body>
+    <div class="headerBox">
+        <img src="images/SPHERE INSIGHT.png">
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li id="destination">Destination
+                    <ul class="dropdown">
+                        <li><a href="asia.html">ASIA</li>
+                        <li><a href="america.html">THE AMERICA</a> </li>
+                        <li><a href="europe.html">EUROPE</a></li>
+                        <li><a href="africa.html">AFRICA</a> </li>
+                    </ul>
+                </li>
+                <li><a href="workwithme.html">Work with me</a></li>
+                <li><a href="">Travel</a>
+                    <ul class="dropdown" style="transform: translateX(-25%);">
+                        <li><a href="planning.html">PLANNING</a> </li>
+                        <li><a href="packing.html">PACKING</a> </li>
+                        <li><a href="tips.html">TIPS +ADVICE</a> </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <h3 style="text-align: center;font-size: 3vw;">AFRICA</h3>
+    <div id="destinations"></div>
+</body>
+</html>
+<script>
+function fetch() {
+    var content = document.getElementById('destinations');
+    var tableName = "africa";
+    // Create an AJAX request to fetch messages from the database
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'destination.php?table=' + tableName, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            content.innerHTML = xhr.responseText;
+
+        }
+    };
+    xhr.send();
+}
+fetch();
+
+</script>

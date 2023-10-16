@@ -1,0 +1,21 @@
+
+#destinations{
+    text-align: center;
+}
+.destinations{
+    text-align: center;
+}
+.image{
+    padding: 20px;
+    font-size: 1.4vw;
+    float: left;
+    height: 30vw;
+    margin: 10px;
+}
+.image img{
+    width: 25vw;
+    max-width: 500px;
+}
+.image:hover{
+    background-color: rgb(252, 181, 146);
+}
