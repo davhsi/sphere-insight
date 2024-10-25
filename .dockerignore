@@ -1,0 +1,11 @@
+vendor
+composer.lock
+.env
+*.sql
+.git
+.gitignore
+Dockerfile
+.dockerignore
+*.log
+cache
+tmp
