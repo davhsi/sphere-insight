@@ -1,13 +1,29 @@
 <?php
-include 'db_config.php'; 
-// Securely get the table name from the query string
-$tableName = $conn->real_escape_string($_GET['table']);
+include 'db_config.php';
 
-// Fetch messages from the database
+// Securely get the table name from the query string
+$tableName = isset($_GET['table']) ? $conn->real_escape_string($_GET['table']) : '';
+
+if (!$tableName) {
+    echo "<p>No table specified</p>";
+    exit;
+}
+
+// Debugging output
+echo "<p>Fetching data from table: $tableName</p>";
+
+// Prepare the SQL statement
 $sql = "SELECT * FROM " . $tableName;
+
 $result = $conn->query($sql);
 
-if ($result && $result->num_rows > 0) {
+if ($result === false) {
+    // If there was an error with the query
+    echo "<p>Error executing query: " . htmlspecialchars($conn->error) . "</p>";
+    exit;
+}
+
+if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $link = $row['link'];
         $image = $row['image'];
