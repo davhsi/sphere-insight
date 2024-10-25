@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>upload</title>
+    <link rel="stylesheet" href="../static/css/upload.css">
+</head>
+<body>
+    <div>
+        <form id="upload" action="upload.php" method="post" >
+            <h1>UPLOAD</h1>
+            <div class="field">
+                <label>Link for youtube</label>
+                <input placeholder="Enter youtube link" id="link" name="link">
+            </div>
+            <div class="field">
+                <label>Image name</label>
+                <input placeholder="with proper extension" id="image" name="image">
+                
+            </div>
+            <div class="field">
+                <label>Enter caption</label>
+                <input placeholder="line 1" id="title1" name="title1">
+                <input placeholder="line 2" id="title2" name="title2">
+            </div>
+            <div class="field">
+                <label>Enter 'read more' file name</label>
+                <input placeholder="Read more file" id="page" name="page">
+            </div>
+            <div class="field">
+                <label>Enter Table name</label>
+                <input placeholder="Table name" id="table" name="table">
+            </div>
+            <div class="uploadbtn">
+                <button type="submit" id="uploadbtn"><B>UPLOAD</B></button><br><br>
+            </div><br>
+            <hr>
+            <div id="more">
+                <P>More modifications:</P>
+            <button type="button" onclick="showdelete()">DELETE</button>
+        </div>
+        </form>
+
+
+        <form id="delete" action="delete.php" method="post">
+            <h1>DELETE</h1>
+            <p style="color: red;">Enter the image name for which you need to delete the content. Here your image name is considered as unique ID</p>
+            <div class="field">
+                <label>Image name</label>
+                <input placeholder="with proper extension" id="image" name="image">
+                
+            </div>
+            <div class="field">
+                <label>Enter Table name</label>
+                <input placeholder="Table name" id="table" name="table">
+            </div>
+            
+            <div class="uploadbtn">
+                <button type="submit" id="uploadbtn"><B>DELETE</B></button><br><br>
+            </div><br>
+            <hr>
+            <div id="more">
+                <P>More modifications:</P>
+                <button type="button" onclick="showupload()">UPLOAD</button>
+            </div>
+        </form>
+        <img src="../static/images/SPHERE INSIGHT.png" style="background-color: white; border-radius: 20px;position: absolute; top: 0%; left: 50%; transform: translateX(-50%);">
+    </div>
+    
+</body>
+</html>
+<script>
+    function showupload(){
+        document.getElementById('upload').style.display='block';
+        document.getElementById('delete').style.display='none';
+    }
+    function showdelete(){
+        document.getElementById('upload').style.display='none';
+        document.getElementById('delete').style.display='block';
+    }
+</script>

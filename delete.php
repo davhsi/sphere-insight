@@ -1,26 +1,15 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sphere_insight";
+// Include the database configuration
+include 'db_config.php'; 
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-// Check if form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $image = $_POST["image"];
     $table = $_POST["table"];
 
-    $sql = "DELETE FROM $table WHERE image = '$image'";
+    // Prepare the SQL query
+    $sql = "DELETE FROM " . $conn->real_escape_string($table) . " WHERE image = '" . $conn->real_escape_string($image) . "'";
     
-$result = $conn->query($sql);
+    $result = $conn->query($sql);
     $conn->close();
-    }
-
+}
 ?>
-

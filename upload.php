@@ -1,30 +1,23 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sphere_insight";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-// Check if form is submitted
+include 'db_config.php'; 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $link = $_POST["link"];
-    $image = $_POST["image"];
-    $title1 = $_POST["title1"];
-    $title2 =$_POST["title2"];
-    $page = $_POST["page"];
-    $table = $_POST["table"];
+    $link = $conn->real_escape_string($_POST["link"]);
+    $image = $conn->real_escape_string($_POST["image"]);
+    $title1 = $conn->real_escape_string($_POST["title1"]);
+    $title2 = $conn->real_escape_string($_POST["title2"]);
+    $page = $conn->real_escape_string($_POST["page"]);
+    $table = $conn->real_escape_string($_POST["table"]);
 
+    // Prepare the SQL query
     $sql = "INSERT INTO $table (link, image, title, page) VALUES ('$link','$image','$title1<br>$title2','$page')";
 
-    
-$result = $conn->query($sql);
+    // Execute the query
+    if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
     $conn->close();
 }
 ?>
-

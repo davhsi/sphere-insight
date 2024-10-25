@@ -1,30 +1,30 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sphere_insight";
+include 'db_config.php'; // This includes the db_config.php file, creating the $conn object
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+// Get the base URL from the environment variable
+$baseUrl = getenv('BASE_URL');
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["emailid"];
-    $password = $_POST["password"];
-    
+    // Sanitize input to prevent SQL injection
+    $email = $conn->real_escape_string($_POST["emailid"]);
+    $password = $conn->real_escape_string($_POST["password"]);
+
+    // Prepare and execute the SQL query
     $sql = "SELECT * FROM admin WHERE email = '$email' AND password = '$password'";
     $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
+    if ($result && $result->num_rows > 0) {
         $name = $result->fetch_assoc()["name"];
-        header("Location: http://localhost/vlog/upload.html?username=$name");
+        // Redirect to the upload page with the username in the query string
+        header("Location: " . $baseUrl . "/vlog/upload.html?username=" . urlencode($name));
         exit;
-    } else { 
-        header("Location: login.html");
+    } else {
+        // If the credentials are wrong, redirect back to the login page
+        header("Location: " . $baseUrl . "/login.html");
+        exit;
     }
 
+    // Close the connection
     $conn->close();
 }
 ?>
-
