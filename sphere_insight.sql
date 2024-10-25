@@ -27,12 +27,14 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
-CREATE TABLE `admin` (
-  `ID` int(255) NOT NULL,
+
+CREATE TABLE IF NOT EXISTS `admin`(
+  `ID` int(255) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `name` text DEFAULT NULL,
-  `mobile_number` int(10) NOT NULL
+  `mobile_number` int(10) NOT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -48,13 +50,15 @@ INSERT INTO `admin` (`ID`, `email`, `password`, `name`, `mobile_number`) VALUES
 -- Table structure for table `africa`
 --
 
-CREATE TABLE `africa` (
-  `id` int(255) NOT NULL,
+CREATE TABLE IF NOT EXISTS `africa` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
   `link` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `page` varchar(255) NOT NULL
+  `page` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 --
 -- Dumping data for table `africa`
@@ -73,14 +77,15 @@ INSERT INTO `africa` (`id`, `link`, `image`, `title`, `page`) VALUES
 -- Table structure for table `america`
 --
 
-CREATE TABLE `america` (
+CREATE TABLE IF NOT EXISTS `america` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
   `link` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `page` varchar(255) NOT NULL
+  `page` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
 -- Dumping data for table `america`
 --
 
@@ -104,13 +109,15 @@ INSERT INTO `america` (`link`, `image`, `title`, `page`) VALUES
 -- Table structure for table `asia`
 --
 
-CREATE TABLE `asia` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `asia` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `link` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
-  `page` varchar(255) DEFAULT NULL
+  `page` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 --
 -- Dumping data for table `asia`
@@ -134,12 +141,13 @@ INSERT INTO `asia` (`id`, `link`, `image`, `title`, `page`) VALUES
 -- Table structure for table `europe`
 --
 
-CREATE TABLE `europe` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `europe` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `link` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `page` varchar(255) NOT NULL
+  `page` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -166,14 +174,14 @@ INSERT INTO `europe` (`id`, `link`, `image`, `title`, `page`) VALUES
 -- Table structure for table `packing`
 --
 
-CREATE TABLE `packing` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `packing` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `link` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
-  `page` varchar(255) DEFAULT NULL
+  `page` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Dumping data for table `packing`
 --
@@ -198,14 +206,14 @@ INSERT INTO `packing` (`id`, `link`, `image`, `title`, `page`) VALUES
 -- Table structure for table `planning`
 --
 
-CREATE TABLE `planning` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `planning` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `link` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
-  `page` varchar(255) DEFAULT NULL
+  `page` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Dumping data for table `planning`
 --
@@ -230,14 +238,14 @@ INSERT INTO `planning` (`id`, `link`, `image`, `title`, `page`) VALUES
 -- Table structure for table `tips`
 --
 
-CREATE TABLE `tips` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tips` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `link` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
-  `page` varchar(255) DEFAULT NULL
+  `page` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Dumping data for table `tips`
 --
@@ -260,50 +268,6 @@ INSERT INTO `tips` (`id`, `link`, `image`, `title`, `page`) VALUES
 -- Indexes for dumped tables
 --
 
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `africa`
---
-ALTER TABLE `africa`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `asia`
---
-ALTER TABLE `asia`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `europe`
---
-ALTER TABLE `europe`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `packing`
---
-ALTER TABLE `packing`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `planning`
---
-ALTER TABLE `planning`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tips`
---
-ALTER TABLE `tips`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
 --
 
 --

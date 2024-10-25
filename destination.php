@@ -33,7 +33,7 @@ if ($result->num_rows > 0) {
         // Output the HTML content
         echo "
         <div class='image'>
-            <a href='" . htmlspecialchars($link) . "'><img src='images/" . htmlspecialchars($image) . "'></a>
+            <a href='" . htmlspecialchars($link) . "'><img src='../static/images/" . htmlspecialchars($image) . "'></a>
             <p>" . htmlspecialchars($title) . "</p>
             <a href='readmore/" . htmlspecialchars($page) . "'>READ MORE</a>
         </div>";

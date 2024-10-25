@@ -16,11 +16,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result && $result->num_rows > 0) {
         $name = $result->fetch_assoc()["name"];
         // Redirect to the upload page with the username in the query string
-        header("Location: " . $baseUrl . "/vlog/upload.html?username=" . urlencode($name));
+        header("Location: " . $baseUrl . "templates/upload.html?username=" . urlencode($name));
         exit;
     } else {
         // If the credentials are wrong, redirect back to the login page
-        header("Location: " . $baseUrl . "/login.html");
+        header("Location: " . $baseUrl . "templates/login.html");
         exit;
     }
 

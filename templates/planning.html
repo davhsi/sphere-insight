@@ -45,7 +45,7 @@ function fetch() {
     var tableName = "planning";
     // Create an AJAX request to fetch messages from the database
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'destination.php?table=' + tableName, true);
+    xhr.open('GET', '../destination.php?table=' + tableName, true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             content.innerHTML = xhr.responseText;
